@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('packages', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('destination');
-            $table->string('description');
-            $table->string('price');
-            $table->string('total_seat');
-            $table->string('duration');
+            $table->foreignId('traveler_id')->constrained();
+            $table->foreignId('package_id')->constrained();
+            $table->dateTime('booking_date');
+            $table->integer('number_of_seats');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('packages');
+        Schema::dropIfExists('bookings');
     }
 };

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('itineries', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('package_id');
+            $table->foreignId('package_id')->constrained();
             $table->string('day');
-            $table->boolean('activity');
+            $table->string('activity');
             $table->string('location');
             $table->timestamps();
         });
