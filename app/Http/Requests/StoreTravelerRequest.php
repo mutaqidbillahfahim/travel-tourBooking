@@ -24,7 +24,7 @@ class StoreTravelerRequest extends FormRequest
 {
     return [
         'name'  => 'required|string|max:255',
-        'email' => 'required|email|unique:traveler',
+        'email' => 'required|email|unique:travelers,email',
         'phone' => 'nullable|string|max:20',
         'address' => 'nullable|string',
 

@@ -14,15 +14,15 @@ class Booking extends Model
         'traveler_id',
         'package_id',
         'booking_date',
-        'number_of_seate',
+        'number_of_seats',
         'status',
     ];
-    public function Traveler()
+    public function traveler()
     {
         return $this->belongsTo(Traveler::class);
     }
     public function package()
     {
-        return $this->belongsTo(package::class);
+        return $this->belongsTo(Package::class);
     }
 }

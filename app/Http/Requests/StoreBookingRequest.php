@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTravelerRequest extends FormRequest
+class StoreBookingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,11 @@ class UpdateTravelerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'  => 'required|string|max:255',
-            'email' => 'required|email|unique:Travelers,email',
-            'phone' => 'nullable|string|max:20',
-            'address' => 'nullable|string',
-
+            'traveler_id' => 'required|exists:travelers,id',
+            'package_id' => 'required|exists:packages,id',
+            'booking_date' => 'required|date',
+            'number_of_seats' => 'required|integer|min:1',
+            'status' => 'required|string',
         ];
     }
 }

@@ -18,6 +18,6 @@ class Itinery extends Model
     ];
     public function package()
     {
-        return $this->belongsTo(package::class);
+        return $this->belongsTo(Package::class);
     }
 }
