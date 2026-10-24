@@ -18,15 +18,19 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-    $exceptions->render(function (ModelNotFoundException $e, $request) {
-        return response()->json([
-            'message' => 'Resource not found.'
-        ], 404);
-    });
+    
+$exceptions->render(function (ModelNotFoundException $e, $request) {
+    return response()->json([
+        'message' => 'Resource not found',
+        'errors' => (object) [],
+    ], 404);
+});
 
-    $exceptions->render(function (NotFoundHttpException $e, $request) {
-        return response()->json([
-            'message' => 'Resource not found.'
-        ], 404);
-    });
+$exceptions->render(function (NotFoundHttpException $e, $request) {
+    return response()->json([
+        'message' => 'Endpoint not found',
+        'errors' => (object) [],
+    ], 404);
+});
+
 })->create();

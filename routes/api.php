@@ -8,12 +8,13 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ItineryController;
 
-Route::prefix('v1')->group(function(){
+Route::prefix('v1')->group(function () {
     Route::apiResource('packages', PackageController::class);
+    Route::apiResource('travelers', TravelerController::class);
 });
-Route::apiResource('travelers', TravelerController::class);
+
 Route::apiResource("bookings", BookingController::class);
-Route::apiResource("itineries",ItineryController::class);
+Route::apiResource("itineries", ItineryController::class);
 
 Route::get('/hello', [WelcomeController::class, 'hello']);
 
